@@ -34,3 +34,27 @@
     border-radius: 10px;
     border: 3px solid #ffffff;
   }
+
+.border-red {
+  border-color: red;
+}
+
+.border-green {
+  border-color: green;
+}
+
+.border-black {
+  border-color: black;
+}
+
+.bg-red {
+  background-color: red;
+}
+
+.bg-green {
+  background-color: green;
+}
+
+.bg-black {
+  background-color: black;
+}
