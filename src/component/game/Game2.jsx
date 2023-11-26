@@ -2,40 +2,34 @@ import React, { useState } from "react";
 
 function Game2() {
   const [toDoList, setList] = useState([]);
-  const options = ["Penting", "Biasa", "Tidak Penting"];
+  const priorityOptions = ["Penting", "Biasa", "Tidak Penting"];
 
   const [nama, setNama] = useState("");
   const [priority, setPriority] = useState("");
   const [catatan, setCatatan] = useState("");
 
-  const submitHandler = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    setList((dataSebelumnya) => {
-      const newData = {
-        nama: nama,
-        priority: priority,
-        catatan: catatan,
-      };
-
-      return [...dataSebelumnya, newData];
-    });
+    const newTask = {
+      nama: nama,
+      priority: priority,
+      catatan: catatan,
+    };
+    setList((dataSebelumnya) => [...dataSebelumnya, newTask]);
     
     setNama("");
     setPriority("");
     setCatatan("");
-
   };
-
 
   return (
     <div className="p-5">
       <h1>Simple To-Do List</h1>
-      <form className="row mt-5" onSubmit={submitHandler}>
+      <form className="row mt-5" onSubmit={handleSubmit}>
         <div className="col-md-6 text-start">
           <label htmlFor="inputNama" className="form-label">
             Apa yang ingin dikerjakan?
           </label>
-          
           <input
             type="text"
             className="form-control"
@@ -47,23 +41,20 @@ function Game2() {
           />
         </div>
         <div className="col-md-6 text-start">
-          
-          <label htmlFor="inputNama" className="form-label">
+          <label htmlFor="inputPriority" className="form-label">
             Pilih Priority
           </label>
-
           <select
             className="form-select"
-            id="inputNama"
+            id="inputPriority"
             value={priority}
             onChange={(e) => setPriority(e.target.value)}
             required
           >
-
-            <option value="" disabled hidden selected>
+            <option value="" disabled hidden>
               Pilih Priority
             </option>
-            {options.map((value) => (
+            {priorityOptions.map((value) => (
               <option value={value} key={value}>
                 {value}
               </option>
@@ -71,17 +62,15 @@ function Game2() {
           </select>
         </div>
         <div className="col-md-6 mt-3 text-start">
-          
-          <label htmlFor="inputNama" className="form-label">
+          <label htmlFor="inputCatatan" className="form-label">
             Catatan
           </label>
-          
           <textarea
             className="form-control"
             placeholder="Isi Catatan To-Do List"
-            id="inputNama"
+            id="inputCatatan"
             value={catatan}
-            style={{ height: "150px"}}
+            style={{ height: "150px" }}
             onChange={(e) => setCatatan(e.target.value)}
             required
           />
@@ -93,31 +82,31 @@ function Game2() {
       </form>
 
       <div className="row mt-4">
-        {toDoList.map((item, index) => (
+        {toDoList.map((task, index) => (
           <div className="col-md-4 mb-3 mt-2" key={index}>
             <div
               className={`card ${
-                item.priority === "Penting"
+                task.priority === "Penting"
                   ? "border-red"
-                  : item.priority === "Biasa"
+                  : task.priority === "Biasa"
                   ? "border-green"
                   : "border-black"
               }`}
             >
               <div
                 className={`card-header text-light text-bold text-center ${
-                  item.priority === "Penting"
+                  task.priority === "Penting"
                     ? "bg-red"
-                    : item.priority === "Biasa"
+                    : task.priority === "Biasa"
                     ? "bg-green"
                     : "bg-black"
                 }`}
               >
-                {item.priority}
+                {task.priority}
               </div>
               <div className="card-body">
-                <h5 className="card-title">{item.nama}</h5>
-                <p className="card-text">{item.catatan}</p>
+                <h5 className="card-title">{task.nama}</h5>
+                <p className="card-text">{task.catatan}</p>
               </div>
             </div>
           </div>
@@ -127,4 +116,4 @@ function Game2() {
   );
 }
 
-export default Game2
+export default Game2;

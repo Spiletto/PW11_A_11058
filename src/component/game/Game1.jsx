@@ -74,7 +74,6 @@ const Game1 = () => {
       </ol>
 
       <form className="row" onSubmit={checkGuess}>
-        {/* Input Section */}
         <div className="col-md-6 ms-4 mt-5">
           {guessCount === -1 || (
             <>
@@ -95,7 +94,6 @@ const Game1 = () => {
           )}
         </div>
 
-        {/* Display Section */}
         <div className="col-md-6 d-block text-start ms-4 mt-4">
           {gameStart ? `Nilai Aslinya Adalah ${answer}` : "Silahkan Mulai Permainan"}
         </div>
@@ -104,7 +102,6 @@ const Game1 = () => {
           {guessCount === -1 ? "" : `Jumlah Tebakan ${guessCount}`}
         </div>
 
-        {/* Button Section */}
         <div className="col-md-6 d-flex justify-content-start">
           {guessCount === -1 ? (
             <button className="btn btn-success btn ms-4 mt-4" onClick={startGame}>
